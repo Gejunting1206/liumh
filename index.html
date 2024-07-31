@@ -4,6 +4,12 @@
           <meta charset="utf-8">
           <title>我的代码库</title>
           <style>
+                .1234 {
+                    -webkit-user-select: none; /* Chrome, Safari, Opera */
+                    -moz-user-select: none; /* Firefox */
+                    -ms-user-select: none; /* IE 10+ */
+                    user-select: none; /* Standard syntax */
+                }
                 body {
                     background-image: url('background.jpg');
                     background-repeat: no-repeat;
@@ -14,7 +20,7 @@
       </head>
       <body>
         <h1 align="center">我的代码库</h1>
-        <div style="color: #FFF333">
+        <div style="color: #FFF333" class="1234>
             &nbsp &nbsp优先级队列  priority_queue  头文件 queue<br>
             &nbsp &nbsp可以把放进去的元素按照一定的规则进行自动的排序，底层 堆排序<br>
             &nbsp &nbsppriority_queue<int> pq;//默认从大到小的<br>
