@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+      <head>
+          <meta charset="utf-8">
+          <title>我的代码库</title>
+          <style>
+                body {
+                    background-image: url('background.jpg');
+                    background-repeat: no-repeat;
+                    background-attachment: fixed;
+                    background-size: 100% 100%;
+                }
+    </style>
+      </head>
+      <body>
+        <h1 align="center">我的代码库</h1>
+        <div style="color: #FFF333">
+            &nbsp &nbsp优先级队列  priority_queue  头文件 queue<br>
+            &nbsp &nbsp可以把放进去的元素按照一定的规则进行自动的排序，底层 堆排序<br>
+            &nbsp &nbsppriority_queue<int> pq;//默认从大到小的<br>
+            &nbsp &nbsppriority_queue<数据类型, 底层容器, 排序规则> pq;<br>
+            &nbsp &nbsp底层容器 ：vector<数据类型>  /  deque<数据类型><br>
+            &nbsp &nbsp排序规则 ：<br>
+            &nbsp &nbsp1.基本数据类型 + string<br>
+            &nbsp &nbsp(1) less<类型>     默认的 降序的<br>
+            &nbsp &nbsppriority_queue<int, vector<int>, less<int> > pq;<br>
+            &nbsp &nbsp(2) greater<类型>  升序的<br>
+            &nbsp &nbsppriority_queue<int, vector<int>, greater<int> > pq;<br>
+            &nbsp &nbsp 2.结构体类型   结构体 node ，成员 x, y<br>
+            &nbsp &nbspbool operator <(node a, node b){//priority_queue<node> pq;<br>
+            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp    return a.x < b.x;// 按照 x 从大到小<br>
+            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp   return a.x > b.x;// 按照 x 从小到大<br>
+            &nbsp &nbsp}<br>
+
+            &nbsp &nbspstruct cmp{//priority_queue<node, vector<node>, cmp > pq;<br>
+            &nbsp &nbsp &nbsp &nbsp    bool operator()(const node &a, const node &b) const{<br>
+            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp        return a.x < b.x;// 按照 x 从大到小<br>
+            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp        return a.x > b.x;// 按照 x 从小到大<br>
+            &nbsp &nbsp &nbsp &nbsp    }<br>
+            &nbsp &nbsp};<br>
+            &nbsp &nbsp方法<br>
+            &nbsp &nbsp入队 push  出队 pop   访问优先级最高的元素 top   获取元素个数 size    判空  empty<br>
+        </div>
+      </body>
+</html>
