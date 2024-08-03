@@ -4,11 +4,12 @@
           <meta charset="utf-8">
           <title>我的代码库</title>
           <style>
-                div {
+                .test {
                     -webkit-user-select: none; /* Chrome, Safari, Opera */
                     -moz-user-select: none; /* Firefox */
                     -ms-user-select: none; /* IE 10+ */
                     user-select: none; /* Standard syntax */
+                    white-space: pre
                 }
                 body {
                     background-image: url('background.jpg');
@@ -21,31 +22,36 @@
       <body>
         <h1 align="center">我的代码库</h1>
         <div style="color: #FFF333" class="text">
-            &nbsp &nbsp优先级队列  priority_queue  头文件 queue<br>
-            &nbsp &nbsp可以把放进去的元素按照一定的规则进行自动的排序，底层 堆排序<br>
-            &nbsp &nbsppriority_queue<int> pq;//默认从大到小的<br>
-            &nbsp &nbsppriority_queue<数据类型, 底层容器, 排序规则> pq;<br>
-            &nbsp &nbsp底层容器 ：vector<数据类型>  /  deque<数据类型><br>
-            &nbsp &nbsp排序规则 ：<br>
-            &nbsp &nbsp1.基本数据类型 + string<br>
-            &nbsp &nbsp(1) less<类型>     默认的 降序的<br>
-            &nbsp &nbsppriority_queue<int, vector<int>, less<int> > pq;<br>
-            &nbsp &nbsp(2) greater<类型>  升序的<br>
-            &nbsp &nbsppriority_queue<int, vector<int>, greater<int> > pq;<br>
-            &nbsp &nbsp 2.结构体类型   结构体 node ，成员 x, y<br>
-            &nbsp &nbspbool operator <(node a, node b){//priority_queue<node> pq;<br>
-            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp    return a.x < b.x;// 按照 x 从大到小<br>
-            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp   return a.x > b.x;// 按照 x 从小到大<br>
-            &nbsp &nbsp}<br>
+#include <iostream>
+using namespace std;
+int ans;
+int a[] = {2, 3, 5, 7}, b[] = {1, 3, 7, 9};
+int n;
 
-            &nbsp &nbspstruct cmp{//priority_queue<node, vector<node>, cmp > pq;<br>
-            &nbsp &nbsp &nbsp &nbsp    bool operator()(const node &a, const node &b) const{<br>
-            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp        return a.x < b.x;// 按照 x 从大到小<br>
-            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp        return a.x > b.x;// 按照 x 从小到大<br>
-            &nbsp &nbsp &nbsp &nbsp    }<br>
-            &nbsp &nbsp};<br>
-            &nbsp &nbsp方法<br>
-            &nbsp &nbsp入队 push  出队 pop   访问优先级最高的元素 top   获取元素个数 size    判空  empty<br>
+bool check(int x){
+    if(x == 1) return false;
+    
+    for(int i = 2; i <= x / i; i ++){
+        if(x % i == 0) return false;
+    }
+    return true;
+}
+
+void dfs(int x){
+    if(x > n) return;
+    ans ++;
+    for(int i = 0; i < 4; i ++)
+        if(check(x * 10 + b[i]))
+            dfs(x * 10 + b[i]);
+}
+
+int main(){
+    cin >> n;
+    for(int i = 0; i < 4; i ++)
+         dfs(a[i]);        
+    cout << ans;    
+    return 0;
+}              
         </div>
       </body>
 </html>
